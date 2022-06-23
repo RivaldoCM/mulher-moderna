@@ -38,11 +38,11 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body, button, texarea, input {
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Montserrat', sans-serif !important;
         font-weight: 400;
     }
 
-    h1, h2, h3, h4, h5, h6, strong{font-weight: 700;}
+    h1, h2, h3, h4, h5, h6, strong, button{font-weight: 700;}
 
     button {cursor: pointer;}
 
