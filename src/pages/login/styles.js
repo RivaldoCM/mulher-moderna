@@ -11,7 +11,33 @@ export const Container = styled.div`
     }
 
     .content{
-        flex-direction: column;
+        
+        form{
+            flex-direction: column;
+        }
+
+        .content__item{
+            margin-top: 1rem;
+
+            a{
+                color: var(--gray);
+
+                :hover{ 
+                    text-decoration: underline;
+                }
+                
+            }
+
+            :last-of-type{
+                position: absolute;
+                bottom: 0;
+                margin-bottom: 3rem;
+
+                a{
+                    color: var(--purple);
+                }
+            }
+        }
     }
 
 `
