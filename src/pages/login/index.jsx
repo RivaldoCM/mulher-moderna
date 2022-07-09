@@ -1,13 +1,13 @@
-import { useState, useEffect, useContext } from "react";
+import { useState } from "react";
+
+import { api } from "../../services/api"
 
 import { Button, IconButton, Input, InputLabel, InputAdornment, FormControl, TextField } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 import { Container } from "./styles";
-import { AuthContext } from "../../contexts/auth";
 
-import logo from "../../assets/images/logo.svg"
-
+import logo from "../../assets/images/logo.svg";
 
 export function Login(){
     const [email, setEmail] = useState("");
@@ -17,10 +17,15 @@ export function Login(){
         showPassword: false,
     });
     
-    //interrompendo a progressão do button ára capturar os dados
+    //interrompendo a progressão do button para capturar os dados
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("submit", { email, password });
+        api.post("/login", { username:email, password }  ).then((response) => {
+            localStorage.setItem("token", response.data.token)
+            window.location.href = "/"
+            }
+        );
+        //enviando os dados e recebendo o token caso o user esteja correto
     }
     
     const handleChange = (prop) => (event) => {
