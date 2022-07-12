@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-
 export const GlobalStyle = createGlobalStyle`
 
     :root {
@@ -9,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         --green: #0D9E00;
         --purple: #3C3163;
         --gray: #adadad; 
+        --pink: #E53F71;
         --background: #eaeaea;
     }
 
@@ -44,7 +44,7 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
     }
 
-    h1, h2, h3, h4, h5, h6, strong, button{font-weight: 700;}
+    h1, h2, h3, h4, h5, h6, strong, button{font-weight: 700; background: none;}
 
     button {cursor: pointer;}
 
