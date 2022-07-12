@@ -9,9 +9,7 @@ export function App() {
 
   return (
     <Router>
-      {window.location.pathname !== "/control" ? <Header /> : '' }
       <Routes />
-
       <GlobalStyle />
     </Router>
   );

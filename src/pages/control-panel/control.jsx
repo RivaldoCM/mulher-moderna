@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 
 import { Menu } from "../../components/menu/index";
+import { Dashboard } from "./dashboard";
 
-import { Container } from "./styles"
+import { Container, Main } from "./styles";
 
 export function Control(){
     useEffect(() => {
@@ -15,9 +15,9 @@ export function Control(){
     return(
         <Container className="flex">
             <Menu />
-            <main>
-                <Link to='dashboard'>oioi</Link>
-            </main>
+            <Main>
+                
+            </Main>
         </Container>
     )
 }

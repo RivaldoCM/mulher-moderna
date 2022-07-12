@@ -10,8 +10,12 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import DiscountOutlinedIcon from '@mui/icons-material/DiscountOutlined';
 import StoreMallDirectoryOutlinedIcon from '@mui/icons-material/StoreMallDirectoryOutlined';
+import { useNavigate } from "react-router-dom";
+
 
 export function Menu(){
+
+    const navigate = useNavigate();
 
     return(
         <Container>
@@ -21,7 +25,7 @@ export function Menu(){
             <nav>
                 <Paper sx={{ width: "100%", boxShadow:"none" }}>
                     <MenuList>
-                        <MenuItem>
+                        <MenuItem onClick={() => navigate('dashboard')}>
                             <ListItemIcon>
                                 <DashboardIcon fontSize="medium"/>
                             </ListItemIcon>
