@@ -1,56 +1,44 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-    flex-direction: column;
-    height: 424px;
+    flex-direction: row;
+    height: 12rem;
     background: var(--white);
 
     .logo{
-        width: 100%;
+        width: 25%;
         height: 100%;
-        max-height: 334px;
 
         img{
-            //responsive
-            width: 100%;
-            max-width: 314px;
+            width: 11.75rem;
             height: 100%;
-            max-height: 120px;
-            margin: 0.25rem;
-            //responsive
         }
     }
-`
 
-export const Navigation = styled.nav`
-    
-    width: 100%;
-    height: 90px;
+    .search-box{
+        width: 50%;
+        height: 100%;
 
-    .center{
-        position: relative;
-
-        ul{
-        
-            li{
-                margin: 0 2rem;
-                padding: 0.25rem 0;
-                border-top: 1.72px solid black;
-
-                :hover{
-                    filter: opacity(50%);
-                }
-            }
+        input{
+            width: 37.5rem;
+            height: 2.8rem;
+            padding: 0 .5rem;
+            border-bottom: 2px solid black;
         }
 
-        .header-icon{
-            position: absolute;
-            right: 0;
-            margin-right: 2rem;
+        button{
+            height: 2.8rem;
+            background: none;
+            border-bottom: 2px solid black;
+        }
+    }
 
-            :hover{
-                filter: opacity(75%);
-            }
+    .header-icon{
+        width: 25%;
+        margin-right: 2rem;
+
+        :hover{
+            filter: opacity(75%);
         }
     }
 `

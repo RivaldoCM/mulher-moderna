@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Header } from "../../components/header";
 
 export function Home(){
     useEffect(() => {
@@ -8,8 +9,8 @@ export function Home(){
     }, []);
 
     return(
-        <h1>
-            
-        </h1>
+        <>
+            <Header />
+        </>
     )
 }

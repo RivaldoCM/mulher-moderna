@@ -1,5 +1,6 @@
-import { Container, Navigation } from "./styles"
+import { Container } from "./styles"
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 import logo from "../../assets/images/logo.svg"
 
@@ -9,28 +10,21 @@ export function Header(){
             <div className="logo flex">
                 <img src={logo} alt="" />
             </div>
-            <Navigation className="flex">
-                <div className="center flex">
-                    <ul className="flex">
-                        <li>
-                            <a href="#">Inicio</a>
-                        </li>
-                        <li>
-                            <a href="#">Promoções</a>
-                        </li>
-                        <li>
-                            <a href="#">Sobre</a>
-                        </li>
-                    </ul>
-                    <div className="header-icon">
-                        <AccountCircleOutlinedIcon 
-                            style={{ fontSize: '2rem',
-                            color: '#3C3163', 
-                            cursor: 'pointer'}}
-                        />
-                    </div>
-                </div>
-            </Navigation>
+            <div className="search-box flex">
+                <input type="search" placeholder="O que ce quer?"/> 
+                <button>
+                    <SearchOutlinedIcon
+                        style={{ fontSize: '2rem' }}
+                    />
+                </button>
+            </div>
+            <div className="header-icon flex">
+                <AccountCircleOutlinedIcon 
+                    style={{ fontSize: '3.87rem',
+                    color: 'var(--pink)', 
+                    cursor: 'pointer'}}
+                />
+            </div>
         </Container>
     )
 }
