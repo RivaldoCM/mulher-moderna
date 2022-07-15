@@ -1,5 +1,15 @@
+import { Card } from "../../components/card";
+import { CardContainer } from "../../components/card/styles";
+
 export function Home(){
     return(
-        <h1>oiuoioioiooi</h1>
+        <CardContainer>
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+        </CardContainer>
     )
 }
