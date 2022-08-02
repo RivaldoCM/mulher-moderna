@@ -1,20 +1,16 @@
 import { Menu } from "../../../components/menu";
+import { Card } from "../../../components/card";
+
 
 import { Container, Main } from "../styles";
-import { Stats, Title } from "./styles";
+import { CardTitle, Stats, Title } from "./styles";
+import { CardContainer } from "../../../components/card/styles";
 
 export function Dashboard(){
     return(
         <Container>
             <Menu />
             <Main>
-               <Title>
-                    <h2>Bem vindo(a), Seila Quem!</h2>
-                    <p>Confira aqui suas estatisticas</p>
-               </Title>
-               <Stats>
-                
-               </Stats>
             </Main>
         </Container>
     )
