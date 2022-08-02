@@ -10,9 +10,8 @@ export function MainRoutes(){
     return (
         <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="/control" element={<Control />}>
-                <Route path='dashboard' element={<Dashboard />} />
-            </Route>
+            <Route path="/control" element={<Control />}/>
+            <Route path='dashboard' element={<Dashboard />} />
             <Route path="/" element={<Home />} />
         </Routes>
     )
