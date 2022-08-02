@@ -1,15 +1,26 @@
 import styled from "styled-components";
 
+
+export const CardTitle = styled.div`
+
+    width: 100%;
+    padding-top: 2rem;
+
+    h3{
+        color: #4B4B4B;
+    }
+`
+
 /*
     CardContainer configurado especificamente para englobar os Cards
     Em display GRID
 */
 export const CardContainer = styled.div`
     display: grid;
-    justify-content: center;
+    justify-content: ${(props) => props.justify};
     grid-template-columns: 300px 300px 300px;
     width: 100%;
-    padding: 2rem 1.5rem;
+    padding: ${(props) => props.padding}; //padrão 2rem 1.5rem
 `
 
 export const CardContent = styled.button`
