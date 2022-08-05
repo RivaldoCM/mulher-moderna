@@ -1,8 +1,12 @@
+import { useState } from "react";
+
 import { Menu } from "../../../components/menu";
 import { Container, Main } from "../styles";
 import { Box, ListProducts } from "./styles";
 
 import { Button } from "@mui/material";
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -12,55 +16,51 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { useState } from "react";
 
 const columns = [
-  { id: 'name', label: 'Name', minWidth: 170 },
-  { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
+  { id: 'name', label: 'Nome do Produto', minWidth: 170 },
+  { id: 'category', label: 'Categoria', minWidth: 170 },
+  { id: 'price', label: 'Preço', minWidth: 170, },
+  { id: 'status', label: 'Status', minWidth: 10, },
   {
-    id: 'population',
-    label: 'Population',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
+    id: 'deleteIcon',
+    label: '',
+    maxWidth: 20,
+    align: 'right'
   },
   {
-    id: 'size',
-    label: 'Size\u00a0(km\u00b2)',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
-  },
-  {
-    id: 'density',
-    label: 'Density',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toFixed(2),
+    id: 'editIcon',
+    label: '',
+    minWidth: 10,
   },
 ];
 
-function createData(name, code, population, size) {
-  const density = population / size;
-  return { name, code, population, size, density };
+function createData(name, category, price, status, deleteIcon, editIcon) {
+  /*
+    Aqui vai entra configuração de icone, sem passar por parametro
+    para ser dinamico.
+    ex: se eu tenho 10 e vendi 2, ainda sobra 8, 
+    entao retorna disponivel no status
+  */  
+  return { name, category, price, status, deleteIcon, editIcon };
 }
 
 const rows = [
-  createData('India', 'IN', 1324171354, 3287263),
-  createData('China', 'CN', 1403500365, 9596961),
-  createData('Italy', 'IT', 60483973, 301340),
-  createData('United States', 'US', 327167434, 9833520),
-  createData('Canada', 'CA', 37602103, 9984670),
-  createData('Australia', 'AU', 25475400, 7692024),
-  createData('Germany', 'DE', 83019200, 357578),
-  createData('Ireland', 'IE', 4857000, 70273),
-  createData('Mexico', 'MX', 126577691, 1972550),
-  createData('Japan', 'JP', 126317000, 377973),
-  createData('France', 'FR', 67022000, 640679),
-  createData('United Kingdom', 'GB', 67545757, 242495),
-  createData('Russia', 'RU', 146793744, 17098246),
-  createData('Nigeria', 'NG', 200962417, 923768),
-  createData('Brazil', 'BR', 210147125, 8515767),
+  createData('India', 'IN', 1324171354, 'Disponível', <button onClick={() => alert('Aqui vem um modal')}><DeleteOutlineOutlinedIcon/></button>,  <EditOutlinedIcon />),
+  createData('China', 'CN', 1403500365, 'Disponível', <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
+  createData('Italy', 'IT', 60483973, 'Disponível', <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
+  createData('United States', 'US', 327167434, 'Fora de estoque', <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
+  createData('Canada', 'CA', 37602103, 'Fora de estoque', <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
+  createData('Australia', 'AU', 25475400, 'Em aprovação', <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
+  createData('Germany', 'DE', 83019200, 357578, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
+  createData('Ireland', 'IE', 4857000, 70273, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
+  createData('Mexico', 'MX', 126577691, 1972550, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
+  createData('Japan', 'JP', 126317000, 377973, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
+  createData('France', 'FR', 67022000, 640679, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
+  createData('United Kingdom', 'GB', 67545757, 242495, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
+  createData('Russia', 'RU', 146793744, 17098246, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
+  createData('Nigeria', 'NG', 200962417, 923768, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
+  createData('Brazil', 'BR', 210147125, 8515767, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
 ];
 
 export function Products() {
@@ -104,7 +104,7 @@ export function Products() {
                 </Box>
                 <ListProducts>
                     <Paper sx={{ 
-                        width: '100%', 
+                        width: '100%',
                         overflow: 'hidden',
                         background: 'none',
                         boxShadow: 'none',
@@ -129,7 +129,7 @@ export function Products() {
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row) => {
                                     return (
-                                    <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                                    <TableRow hover role="checkbox" tabIndex={-1} key={row.category}>
                                         {columns.map((column) => {
                                         const value = row[column.id];
                                         return (
@@ -147,6 +147,7 @@ export function Products() {
                             </Table>
                         </TableContainer>
                         <TablePagination
+                            style={{ padding: '0 4rem' }}
                             rowsPerPageOptions={[10, 25, 50]}
                             component="div"
                             count={rows.length}

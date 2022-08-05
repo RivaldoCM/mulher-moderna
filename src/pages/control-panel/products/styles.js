@@ -34,9 +34,10 @@ export const ListProducts = styled.section`
     th{
         background: transparent;
 
-        td{
-            border-bottom: none;
-        }
+    }
+
+    td{
+        border-bottom: none !important;
     }
 
 `
