@@ -26,14 +26,14 @@ export const CardContainer = styled.div`
 export const CardContent = styled.button`
     width: 17rem;
     height: 21.25rem;
-    margin: .5rem 1rem;
+    margin: .5rem 0;
     background: var(--white);
     border-radius: 40px;
 
     .card__item:first-child{
         width: 100%;
         height: 70%;
-
+        
         img{
             width: 100%;
             height: 100%;
