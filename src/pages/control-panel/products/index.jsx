@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import axios from "axios";
 
 import { Menu } from "../../../components/menu";
 import { Container, Main } from "../styles";
@@ -47,26 +49,22 @@ function createData(name, category, price, status, deleteIcon, editIcon) {
 
 const rows = [
   createData('India', 'IN', 1324171354, 'Disponível', <button onClick={() => alert('Aqui vem um modal')}><DeleteOutlineOutlinedIcon/></button>,  <EditOutlinedIcon />),
-  createData('China', 'CN', 1403500365, 'Disponível', <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
-  createData('Italy', 'IT', 60483973, 'Disponível', <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
-  createData('United States', 'US', 327167434, 'Fora de estoque', <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
-  createData('Canada', 'CA', 37602103, 'Fora de estoque', <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
-  createData('Australia', 'AU', 25475400, 'Em aprovação', <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
-  createData('Germany', 'DE', 83019200, 357578, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
-  createData('Ireland', 'IE', 4857000, 70273, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
-  createData('Mexico', 'MX', 126577691, 1972550, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
-  createData('Japan', 'JP', 126317000, 377973, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
-  createData('France', 'FR', 67022000, 640679, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
-  createData('United Kingdom', 'GB', 67545757, 242495, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
-  createData('Russia', 'RU', 146793744, 17098246, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
+
   createData('Nigeria', 'NG', 200962417, 923768, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
   createData('Brazil', 'BR', 210147125, 8515767, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
 ];
+
 
 export function Products() {
 
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
+
+    useEffect(() => {
+        axios.get('api/products').then(res => {
+            debugger   
+        })
+    }, [])
   
     const handleChangePage = (event, newPage) => {
       setPage(newPage);
