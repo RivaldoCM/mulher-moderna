@@ -26,46 +26,34 @@ const columns = [
   { id: 'status', label: 'Status', minWidth: 10, },
   {
     id: 'deleteIcon',
-    label: '',
+    label: 'deletar',
     maxWidth: 20,
     align: 'right'
   },
   {
     id: 'editIcon',
-    label: '',
+    label: 'editar',
     minWidth: 10,
   },
 ];
-
-function createData(name, category, price, status, deleteIcon, editIcon) {
-  /*
-    Aqui vai entra configuração de icone, sem passar por parametro
-    para ser dinamico.
-    ex: se eu tenho 10 e vendi 2, ainda sobra 8, 
-    entao retorna disponivel no status
-  */  
-  return { name, category, price, status, deleteIcon, editIcon };
-}
-
-const rows = [
-  createData('India', 'IN', 1324171354, 'Disponível', <button onClick={() => alert('Aqui vem um modal')}><DeleteOutlineOutlinedIcon/></button>,  <EditOutlinedIcon />),
-
-  createData('Nigeria', 'NG', 200962417, 923768, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
-  createData('Brazil', 'BR', 210147125, 8515767, <DeleteOutlineOutlinedIcon/>,  <EditOutlinedIcon />),
-];
-
 
 export function Products() {
 
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('api/products').then(res => {
-            debugger   
-        })
-    }, [])
-  
+        axios.get("api/products")
+            .then((res) => {
+                setData(res.data);
+                console.log(data);
+            })
+            .catch((error) => {
+                console.log(error);
+          });
+    }, []);
+    
     const handleChangePage = (event, newPage) => {
       setPage(newPage);
     };
@@ -123,11 +111,11 @@ export function Products() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {rows
+                                {data
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row) => {
                                     return (
-                                    <TableRow hover role="checkbox" tabIndex={-1} key={row.category}>
+                                    <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
                                         {columns.map((column) => {
                                         const value = row[column.id];
                                         return (
@@ -148,7 +136,7 @@ export function Products() {
                             style={{ padding: '0 4rem' }}
                             rowsPerPageOptions={[10, 25, 50]}
                             component="div"
-                            count={rows.length}
+                            count={data.length}
                             rowsPerPage={rowsPerPage}
                             page={page}
                             onPageChange={handleChangePage}

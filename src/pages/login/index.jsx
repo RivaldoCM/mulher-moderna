@@ -52,7 +52,7 @@ export function Login(){
                 <div className="content">
                     
                     <form className="flex" onSubmit={handleSubmit}>
-                        <TextField 
+                        <TextField
                             id="standard-basic" 
                             value={email} 
                             onChange={(e) => setEmail(e.target.value)} //alocando o valor inserido no input para o state
