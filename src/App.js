@@ -9,9 +9,7 @@ import { GlobalStyle } from "./styles/global";
 export function App() {
   return (
     <Router>
-      {window.location.pathname !== "/login" ? <Header /> : '' } 
       <Routes />
-
       <GlobalStyle />
     </Router>
   );

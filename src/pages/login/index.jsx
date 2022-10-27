@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
+import { AuthContext } from "../../contexts/auth";
 import { api } from "../../services/api"
 
 import { Button, IconButton, Input, InputLabel, InputAdornment, FormControl, TextField } from "@mui/material";
@@ -17,14 +18,14 @@ export function Login(){
         showPassword: false,
     });
     
+    const { authenticated, login } = useContext(AuthContext);
+
     //interrompendo a progressão do button para capturar os dados
     const handleSubmit = (e) => {
         e.preventDefault();
-        api.post("/login", { username:email, password }  ).then((response) => {
-            localStorage.setItem("token", response.data.token)
-            window.location.href = "/"
-            }
-        );
+
+        console.log(password, email);
+        login( email, password );
         //enviando os dados e recebendo o token caso o user esteja correto
     }
     
@@ -85,6 +86,7 @@ export function Login(){
                         <div className="content__item"><a href="">Não consigo entrar</a></div>
                         <div className="content__item flex"><p>Não possui uma conta?</p><a href="">Registre-se</a></div>
                     </form>
+                    <p>{String(authenticated)}</p>
                 </div>
             </div>
         </Container>
