@@ -21,11 +21,7 @@ export function MainRoutes(){
         <AuthProvider>
             <Routes>
                 <Route path="/login" element={<Login />} />
-                <Route path="/" element={
-                <Private>
-                    <Home />
-                </Private>
-                } />    
+                <Route path="/" element={ <Private><Home /></Private> } />    
             </Routes>
         </AuthProvider>
     )

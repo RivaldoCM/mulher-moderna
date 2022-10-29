@@ -26,7 +26,6 @@ export function Login(){
 
         console.log(password, email);
         login( email, password );
-        //enviando os dados e recebendo o token caso o user esteja correto
     }
     
     const handleChange = (prop) => (event) => {
