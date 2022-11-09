@@ -6,9 +6,14 @@ import { Login } from "./pages/login";
 
 import { AuthProvider, AuthContext } from "./contexts/auth";
 
+
 export function MainRoutes(){
     const Private = ({ children }) => {
-        const { authenticated } = useContext(AuthContext);
+        const { authenticated, loading } = useContext(AuthContext);
+
+        if (loading) {
+            return <div className="loading">carregando</div>
+        }
 
         if(!authenticated) {
             return <Navigate to="/login" />
