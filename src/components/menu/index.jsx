@@ -1,6 +1,8 @@
 import logo from "../../assets/images/logo.svg"
 import { Container } from "./styles"
 
+import { NavLink } from "react-router-dom"; //Salvou demais
+
 import Paper from '@mui/material/Paper';
 import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
@@ -10,12 +12,9 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import DiscountOutlinedIcon from '@mui/icons-material/DiscountOutlined';
 import StoreMallDirectoryOutlinedIcon from '@mui/icons-material/StoreMallDirectoryOutlined';
-import { useNavigate } from "react-router-dom";
-
 
 export function Menu(){
-
-    const navigate = useNavigate();
+    let activeClassName = "active";
 
     return(
         <Container>
@@ -25,35 +24,60 @@ export function Menu(){
             <nav>
                 <Paper sx={{ width: "100%", boxShadow:"none" }}>
                     <MenuList>
-                        <MenuItem onClick={() => navigate('dashboard')}>
-                            <ListItemIcon>
-                                <DashboardIcon fontSize="medium"/>
-                            </ListItemIcon>
-                            <ListItemText>Dashboard</ListItemText>
-                        </MenuItem>
-                        <MenuItem>
-                            <ListItemIcon>
-                                <ShoppingBagOutlinedIcon fontSize="medium"/>
-                            </ListItemIcon>
-                            <ListItemText>Meus produtos</ListItemText>
-                        </MenuItem>
-                        <MenuItem>
-                            <ListItemIcon>
-                                <DiscountOutlinedIcon fontSize="medium"/>
-                            </ListItemIcon>
-                            <ListItemText>Promoções</ListItemText>
-                        </MenuItem>
-                        <MenuItem>
-                            <ListItemIcon>
-                                <StoreMallDirectoryOutlinedIcon fontSize="medium" />
-                            </ListItemIcon>
-                            <ListItemText>Minha Loja</ListItemText>
-                        </MenuItem>
-                        <MenuItem>
-                            <ListItemIcon>
-                            </ListItemIcon>
-                            <ListItemText>Meu Catálogo [Em Breve]</ListItemText>
-                        </MenuItem>
+                        <NavLink to="/dashboard" 
+                            className={({ isActive }) => isActive ? 
+                            activeClassName : undefined }
+                        >
+                            <MenuItem >
+                                <ListItemIcon>
+                                    <DashboardIcon fontSize="medium"/>
+                                </ListItemIcon>
+                                <ListItemText>Dashboard</ListItemText>
+                            </MenuItem>
+                        </NavLink>
+                        <NavLink to="/products" 
+                            className={({ isActive }) => 
+                            isActive ? activeClassName : undefined }
+                        >
+                            <MenuItem>
+                                <ListItemIcon>
+                                    <ShoppingBagOutlinedIcon fontSize="medium"/>
+                                </ListItemIcon>
+                                <ListItemText>Meus produtos</ListItemText>
+                            </MenuItem>
+                        </NavLink>
+                        <NavLink to="/sales" 
+                            className={({ isActive }) => 
+                            isActive ? activeClassName : undefined }
+                        >
+                            <MenuItem>
+                                <ListItemIcon>
+                                    <DiscountOutlinedIcon fontSize="medium"/>
+                                </ListItemIcon>
+                                <ListItemText>Promoções</ListItemText>
+                            </MenuItem>
+                        </NavLink>
+                        <NavLink to="/store" 
+                            className={({ isActive }) => 
+                            isActive ? activeClassName : undefined }
+                        >
+                            <MenuItem>
+                                <ListItemIcon>
+                                    <StoreMallDirectoryOutlinedIcon fontSize="medium" />
+                                </ListItemIcon>
+                                <ListItemText>Minha Loja</ListItemText>
+                            </MenuItem>
+                        </NavLink>
+                        <NavLink to="disabled" 
+                            className={({ isActive }) => 
+                            isActive ? activeClassName : undefined }
+                        >
+                            <MenuItem>
+                                <ListItemIcon>
+                                </ListItemIcon>
+                                <ListItemText>Meu Catálogo [Em Breve]</ListItemText>
+                            </MenuItem>
+                        </NavLink>
                     </MenuList>
                 </Paper>
             </nav>

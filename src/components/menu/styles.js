@@ -38,16 +38,27 @@ export const Container = styled.aside`
 
     nav {
 
-        li{
+        .active{
+            background: linear-gradient(to left, rgba(229, 63, 113, 1), 10%, #fff 30%);
+            color: var(--pink) !important;
+            //CLASSE USADA QUANDO CLICAR EM ALGUMA OPÇÃO DO MENU
+
+            span, svg{
+                    color: var(--pink) !important;
+                    text-align: center;
+                    font-weight: 500;
+                }
+        }
+
+        a{
+            display: block;
             height: 62px !important;
-            padding-left: 1.5rem;
 
             :hover, :focus{
                 background: linear-gradient(to left, rgba(229, 63, 113, 1), 10%, #fff 30%);
                 
                 span, svg{
                     color: var(--pink);
-
                 }
             }
 
@@ -63,10 +74,15 @@ export const Container = styled.aside`
                 }
             }
 
-            span{
-                color: #4B4B4B;
-                text-align: center;
-                font-weight: 500;
+
+            li{
+                height: 100%;
+                
+                span{
+                    color: #4B4B4B;
+                    text-align: center;
+                    font-weight: 500;
+                }
             }
         }
     }

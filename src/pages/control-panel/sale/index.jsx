@@ -1,9 +1,10 @@
+import { Menu } from "../../../components/menu";
 import { Container } from "./styles";
 
-export function Sale() {
+export function Sales() {
     return (
         <Container>
-            
+            <Menu />
         </Container>
     )
 }
