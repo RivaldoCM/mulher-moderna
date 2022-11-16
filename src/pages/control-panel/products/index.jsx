@@ -23,7 +23,7 @@ const columns = [
   { id: 'name', label: 'Nome do Produto', minWidth: 170 },
   { id: 'category', label: 'Categoria', minWidth: 170 },
   { id: 'price', label: 'Preço', minWidth: 170, },
-  { id: 'status', label: 'Status', minWidth: 10, },
+  { id: 'remaining', label: 'Status', minWidth: 10, },
   {
     id: 'deleteIcon',
     label: 'deletar',
@@ -44,7 +44,7 @@ export function Products() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get("api/products")
+        axios.get("/api/products")
             .then((res) => {
                 setData(res.data);
                 console.log(data);
@@ -117,12 +117,13 @@ export function Products() {
                                     return (
                                     <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
                                         {columns.map((column) => {
-                                        const value = row[column.id];
+                                        const value = row[column.id]; // todos os valores da tabela passam por esta variavel
+                                        console.log(value);
                                         return (
                                             <TableCell key={column.id} align={column.align}>
-                                            {column.format && typeof value === 'number'
-                                                ? column.format(value)
-                                                : value}
+                                            {
+                                                column.format && typeof value === 'number' ? column.format(value) : value
+                                            }
                                             </TableCell>
                                         );
                                         })}
