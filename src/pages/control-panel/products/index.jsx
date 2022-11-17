@@ -22,19 +22,10 @@ import TableRow from '@mui/material/TableRow';
 const columns = [
   { id: 'name', label: 'Nome do Produto', minWidth: 170 },
   { id: 'category', label: 'Categoria', minWidth: 170 },
-  { id: 'price', label: 'Preço', minWidth: 170, },
+  { id: 'price', label: 'Preço', minWidth: 100, },
   { id: 'remaining', label: 'Status', minWidth: 10, },
-  {
-    id: 'deleteIcon',
-    label: 'deletar',
-    maxWidth: 20,
-    align: 'right'
-  },
-  {
-    id: 'editIcon',
-    label: 'editar',
-    minWidth: 10,
-  },
+  { id: 'deleteIcon', label: '', maxWidth: 10, align: 'right'},
+  { id: 'editIcon', label: '', minWidth: 10, align: 'left'},
 ];
 
 export function Products() {
@@ -47,7 +38,6 @@ export function Products() {
         axios.get("/api/products")
             .then((res) => {
                 setData(res.data);
-                console.log(data);
             })
             .catch((error) => {
                 console.log(error);
@@ -118,12 +108,11 @@ export function Products() {
                                     <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
                                         {columns.map((column) => {
                                         const value = row[column.id]; // todos os valores da tabela passam por esta variavel
-                                        console.log(value);
                                         return (
                                             <TableCell key={column.id} align={column.align}>
-                                            {
-                                                column.format && typeof value === 'number' ? column.format(value) : value
-                                            }
+                                                {column.format && typeof value === 'number' ? column.format(value) : value}
+                                                {column.id == 'deleteIcon' ? <DeleteOutlineOutlinedIcon /> : ''}
+                                                {column.id == 'editIcon' ? <EditOutlinedIcon /> : ''}
                                             </TableCell>
                                         );
                                         })}

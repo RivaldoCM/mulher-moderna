@@ -31,13 +31,21 @@ export const ListProducts = styled.section`
     width: 100%;
     padding: 2rem;
 
-    th{
-        background: transparent;
-
-    }
+    th{ background: transparent; }
 
     td{
         border-bottom: none !important;
-    }
 
+        :nth-child(5){
+            svg{
+                color: red !important;
+                cursor: pointer;
+            }
+        }
+        :nth-child(6){
+            svg{
+                cursor: pointer;
+            }
+        }
+    }
 `
